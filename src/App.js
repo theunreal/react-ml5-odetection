@@ -11,6 +11,12 @@ function App() {
 
     React.useEffect(() => {
 
+        const detect = () => {
+            objectDetector.current.detect(webcamRef.current.video, (err, results) => {
+                console.log(results); // Will output bounding boxes of detected objects
+            });
+        };
+
         const runCoco = () => {
             setInterval(() => {
                 detect();
@@ -28,12 +34,6 @@ function App() {
         console.log('Model loaded!');
     };
 
-
-    const detect = () => {
-        objectDetector.current.detect(webcamRef.current.video, (err, results) => {
-            console.log(results); // Will output bounding boxes of detected objects
-        });
-    };
 
     return (
         <div className="App">
